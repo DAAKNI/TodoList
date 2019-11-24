@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"2dolist/app/models"
+	"modest-monkey/2dolist/app/models"
 	"encoding/json"
 	"fmt"
 	"github.com/revel/revel"
