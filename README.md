@@ -15,4 +15,7 @@ Run tests:
 ```
 docker-compose run app sh -c "python manage.py test"
 ```
-
+Create Admin user
+```
+docker-compose run app sh -c "python manage.py createsuperuser"
+```
