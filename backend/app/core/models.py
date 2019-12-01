@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
                                         PermissionsMixin
-
+import datetime
+from django.conf import settings
+from django.utils import timezone
 
 class UserManager(BaseUserManager):
 
@@ -35,3 +37,19 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
+
+class Task(models.Model):
+    """Representation of a Tag"""
+    title = models.CharField(max_length=255)
+    completed = models.BooleanField(default=False)
+    priority = models.PositiveIntegerField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    created_date = models.DateField(default=timezone.now, blank=True, null=True)
+    due_date = models.DateField(blank=True, null=True)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.title

@@ -19,3 +19,7 @@ Create Admin user
 ```
 docker-compose run app sh -c "python manage.py createsuperuser"
 ```
+Add app to project
+```
+docker-compose run --rm app sh -c "python manage.py startapp tasks"
+```
