@@ -1,13 +1,14 @@
-version: "3"
-
+version: "3.2"
 services:
-  app:
-    build:
-      context: .
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend/app:/app
+      #- ./backend:/app/backend
     ports:
       - "8000:8000"
-    volumes:
-      - ./app:/app
+    stdin_open: true
+    tty: true
     command: >
       sh -c "python manage.py wait_for_db &&
               python manage.py migrate &&
@@ -27,11 +28,13 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
 
-#  frontend:
-#    build:
-#      context: ../frontend
-#      dockerfile: Dockerfile
-#      ports:
-#        - "5000:5000"   
-#      volumes:
-#        - .
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    command: npm start
