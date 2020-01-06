@@ -1,18 +1,3 @@
- FROM node:lts-slim
+FROM nginx:alpine
 
- WORKDIR /app/
-
- # Install dependicies
-COPY package.json yarn.lock /app/
-
-RUN npm install
-
- # Add frontend code
-COPY . /app/
-
-EXPOSE 3000
-
-CMD npm start
-
- 
- 
+COPY build /usr/share/nginx/html
