@@ -118,7 +118,7 @@ class PublicUserApiTest(TestCase):
 class PrivateUserApiTest(TestCase):
     """Tests that require authentication"""
 
-    def setup(self):
+    def setUp(self):
         self.user = create_user(
             email="test@test.de",
             password="test123",
@@ -147,7 +147,7 @@ class PrivateUserApiTest(TestCase):
 
         self.user.refresh_from_db()
 
-        self.assertEqual(self.user.name, payload['name'])
+        self.assertEqual(self.user.email, payload['email'])
         self.assertTrue(self.user.check_password(payload['password']))
         self.assertEqual(res.status_code, status.HTTP_200_OK)
 
