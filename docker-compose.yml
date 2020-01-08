@@ -18,6 +18,7 @@ services:
       - DB_NAME=app
       - DB_USER=postgres
       - DB_PASS=password
+
     depends_on:
       - db
 
@@ -28,13 +29,22 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
 
+#  frontend:
+#    build: ./frontend
+#    volumes:
+#      - ./frontend:/app
+#      - /app/node_modules
+#    ports:
+#      - "3000:3000"
+#    depends_on:
+#      - backend
+#    command: npm start
+
+
   frontend:
-    build: ./frontend
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
+    build:
+      context: ./frontend
     ports:
-      - "3000:3000"
-    depends_on:
-      - backend
-    command: npm start
+      - "8080:80"
+    #volumes:
+    #  - "./config-dev.js:/usr/share/nginx/html/config.js"

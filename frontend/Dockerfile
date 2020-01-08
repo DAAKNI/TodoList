@@ -1,18 +1,5 @@
- FROM node:lts-slim
+FROM nginx:alpine
+#RUN apk add --no-cache bash
 
- WORKDIR /app/
-
- # Install dependicies
-COPY package.json yarn.lock /app/
-
-RUN npm install
-
- # Add frontend code
-COPY . /app/
-
-EXPOSE 3000
-
-CMD npm start
-
- 
- 
+#COPY default.conf /etc/nginx/conf.d/default.conf
+COPY build /usr/share/nginx/html

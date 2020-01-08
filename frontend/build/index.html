@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDo List</title>
+</head>
+<body>
+    <h1>TODO List</h1>
+    <div id="todolist">
+        <ul id="todoliste"></ul>
+    </div>
+    <script>
+        var HttpClient = function() {
+    this.get = function(aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function() { 
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+        }
+
+        anHttpRequest.open( "GET", aUrl, true );            
+        anHttpRequest.send( null );
+    }
+}
+
+    var client = new HttpClient();
+    client.get('http://localhost:8000/api/tasks', function(response) {
+        var ul = document.getElementById("todoliste");
+        var node = document.createElement("LI");
+        var textnode = document.createTextNode(response);
+        node.appendChild(textnode);
+        ul.appendChild(node);
+
+
+    });
+
+    </script>
+    
+</body>
+</html>
