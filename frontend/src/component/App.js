@@ -80,7 +80,10 @@ class App extends Component {
           deleteItem={this.deleteItem}
           toggleCompleted={this.toggleCompleted}
         />
-        <button onClick={this.clearCompleted}> Clear completed tasks </button>
+        <button className="clearButton" onClick={this.clearCompleted}>
+          {" "}
+          Clear completed tasks{" "}
+        </button>
       </div>
     );
   }

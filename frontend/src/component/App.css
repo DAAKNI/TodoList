@@ -4,3 +4,14 @@
   flex-wrap: wrap;
   height: 100%;
 }
+
+.clearButton {
+  background-color: cornflowerblue;
+  border: none;
+  color: white;
+  padding: 15px 80px;
+  text-align: center;
+  display: inline-block;
+  font-size: 18px;
+  border-radius: 4px;
+}

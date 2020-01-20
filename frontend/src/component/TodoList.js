@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./TodoList.css";
 
 class TodoList extends Component {
   componentDidUpdate() {
@@ -10,12 +11,16 @@ class TodoList extends Component {
         <div className="header">
           <form onSubmit={this.props.addItem}>
             <input
+              className="input"
               placeholder="Task"
               ref={this.props.inputElement}
               value={this.props.currentItem.text}
               onChange={this.props.handleInput}
             />
-            <button type="submit"> Add Task </button>
+            <button className="addButton" type="submit">
+              {" "}
+              Add Task{" "}
+            </button>
           </form>
         </div>
       </div>

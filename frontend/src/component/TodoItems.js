@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./TodoItems.css";
 
 class TodoItems extends Component {
   createTasks = item => {
@@ -10,7 +11,12 @@ class TodoItems extends Component {
           onChange={() => this.props.toggleCompleted(item.key)}
         />
         {item.text}
-        <button onClick={() => this.props.deleteItem(item.key)}>Delete</button>
+        <button
+          className="deleteButton"
+          onClick={() => this.props.deleteItem(item.key)}
+        >
+          Delete
+        </button>
       </li>
     );
   };
