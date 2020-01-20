@@ -1,11 +1,3 @@
-
-// //get
-// export function getTask(){
-//     return fetch(baseUrl).then(res => res.json());
-// }
-
-// <button onClick={() => deleteData(item.id)}>Delete</button>
-
 export function deleteData(item) {
     fetch('http://localhost:8000/api/tasks/' + item, {
       method: 'delete'
@@ -16,7 +8,6 @@ export function deleteData(item) {
     );
   }
 
-  //<button onClick={() => checkBoxData(item.id)}>check</button>
   export function checkBoxData(item, check) {
     fetch('http://localhost:8000/api/tasks/' + item, {
       method: 'patch',
@@ -30,7 +21,7 @@ export function deleteData(item) {
       })
       })
   }
-  //onClick={() => postData(this.props.currentItem.text)}
+  
   export function postData(task) {
     fetch('http://localhost:8000/api/tasks/', {
       method: 'POST',
@@ -50,20 +41,3 @@ export function deleteData(item) {
       })
       })
   }
-//   export async function getTasks(){
-//     try {
-//       return await fetch('http://localhost:8000/api/tasks/').then(res => res.json()); 
-     
-//     } catch (e) {
-//       console.log(e);
-//     }
-//    }
-//    export const login = function (cb){
-//     fetch('http://localhost:8000/api/tasks/')
-//       .then((response) =>{
-//         return response.json();
-//       })
-//       .then((data) =>{
-//         cb(data);
-//       });
-//   }

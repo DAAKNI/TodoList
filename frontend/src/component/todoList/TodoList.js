@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./TodoList.css";
-import {postData} from "./ApiCall"
+import {postData} from "../apiServices/ApiCall"
 
 class TodoList extends Component {
   componentDidUpdate() {
@@ -15,10 +15,10 @@ class TodoList extends Component {
               className="input"
               placeholder="Task"
               ref={this.props.inputElement}
-              value={this.props.currentItem.text}
+              value={this.props.currentItem.title}
               onChange={this.props.handleInput}
             />
-            <button onClick={() => postData(this.props.currentItem.text)} className="addButton" type="submit">
+            <button className="addButton" type="submit">
               {" "}
               Add Task{" "}
             </button>
