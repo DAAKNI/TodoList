@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./TodoItems.css";
-import { getTask } from "./ApiCall";
+import { getTask, deleteData, checkBoxData } from "./ApiCall";
 
 class TodoItems extends Component {
   state = {
@@ -24,12 +24,12 @@ class TodoItems extends Component {
         <input
           type="checkbox"
           checked={item.completed}
-          onChange={() => this.props.toggleCompleted(item.key)}
+          onChange={() => checkBoxData(item.id, !item.completed)}
         />
-        {item.text}
+        {item.title}
         <button
           className="deleteButton"
-          onClick={() => this.props.deleteItem(item.key)}
+          onClick={() => deleteData(item.id)}
         >
           Delete
         </button>

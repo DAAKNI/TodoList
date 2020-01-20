@@ -5,3 +5,4 @@
 frontend/node_modules/
 frontend/package-lock.json
 frontend/yarn.lock
+frontend/build/index.bundle.js

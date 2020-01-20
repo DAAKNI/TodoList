@@ -3,6 +3,7 @@ import "./App.css";
 import TodoList from "./TodoList";
 import TodoItems from "./TodoItems";
 import NavBar from "./Navbar";
+import {deleteData, checkBoxData} from "./ApiCall"
 
 class App extends Component {
   inputElement = React.createRef();
@@ -15,7 +16,20 @@ class App extends Component {
         key: "",
         completed: false
       }
+
     };
+  }
+
+  async componentDidMount() {
+    try {
+      const res = await fetch("http://localhost:8000/api/tasks/"); // fetching the data from api, before the page loaded
+      const items = await res.json();
+      this.setState({
+        items
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   deleteItem = key => {
@@ -40,10 +54,10 @@ class App extends Component {
     const newItem = this.state.currentItem;
     if (newItem.text !== "") {
       const items = [...this.state.items, newItem];
-      this.setState({
-        items: items,
-        currentItem: { text: "", key: "", completed: false }
-      });
+      // this.setState({
+      //   items: items,
+      //   currentItem: { text: "", key: "", completed: false }
+      // });
     }
   };
 
@@ -57,10 +71,11 @@ class App extends Component {
   };
 
   clearCompleted = () => {
-    const newItems = this.state.items.filter(item => !item.completed);
-    this.setState({
-      items: newItems
-    });
+    const newItems = this.state.items.filter(item => item.completed);
+    newItems.map(newItems => (deleteData( newItems.id)))
+    // this.setState({
+    //   items: newItems
+    // });
   };
 
   render() {

@@ -17,7 +17,7 @@ export function deleteData(item) {
   }
 
   //<button onClick={() => checkBoxData(item.id)}>check</button>
-  export function checkBoxData(item) {
+  export function checkBoxData(item, check) {
     fetch('http://localhost:8000/api/tasks/' + item, {
       method: 'patch',
       headers: {
@@ -25,7 +25,7 @@ export function deleteData(item) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-          completed: true,
+          completed: check,
          
       })
       })
