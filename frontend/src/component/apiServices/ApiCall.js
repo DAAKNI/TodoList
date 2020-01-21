@@ -23,11 +23,18 @@ export function deleteData(item) {
   }
   
   export function postData(task) {
+    let {token} = localStorage.getItem('token');
+
+    // if (token) {
+    //   headers["Authorization"] = `Token ${token}`;
+    // }
+    console.log(localStorage.getItem('token'))
     fetch('http://localhost:8000/api/tasks/', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
       },
       body: JSON.stringify({
         
@@ -39,5 +46,6 @@ export function deleteData(item) {
           due_date: null,
           user: 1
       })
+      
       })
   }

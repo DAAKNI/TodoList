@@ -4,6 +4,7 @@ import TodoList from "../todoList/TodoList";
 import TodoItems from "../todoItems/TodoItems";
 import NavBar from "../navbar/Navbar";
 import {deleteData, checkBoxData, postData} from "../apiServices/ApiCall"
+import Logic from "../auth/Logic"
 
 class App extends Component {
   inputElement = React.createRef();
@@ -33,7 +34,20 @@ class App extends Component {
     // }
   }
   fetchTasks = () => {
-    fetch('http://localhost:8000/api/tasks/')
+    let token
+    if(localStorage.getItem('token') != null){
+      token = localStorage.getItem('token');
+    }
+    
+
+    // if (token) {
+    //   headers["Authorization"] = `Token ${token}`;
+    // }
+    fetch('http://localhost:8000/api/tasks/', {
+        headers: {
+          'Authorization': localStorage.getItem('token')
+        }
+      })
         .then((response) => response.json())
         .then(tasksList => {
             this.setState({ items: tasksList });
@@ -95,6 +109,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Logic
+        />
         <NavBar
           totalItems={this.state.items.filter(item => !item.completed).length}
         />
