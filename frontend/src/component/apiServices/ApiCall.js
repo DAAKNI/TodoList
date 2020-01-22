@@ -34,7 +34,7 @@ export function deleteData(item) {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': localStorage.getItem('token')
+        'Authorization': `Token ${localStorage.getItem('token')}`,
       },
       body: JSON.stringify({
         

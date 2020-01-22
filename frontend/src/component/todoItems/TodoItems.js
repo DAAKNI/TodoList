@@ -6,15 +6,15 @@ class TodoItems extends Component {
     todos: []
   };
   async componentDidMount() {
-    try {
-      const res = await fetch("http://localhost:8000/api/tasks/"); // fetching the data from api, before the page loaded
-      const todos = await res.json();
-      this.setState({
-        todos
-      });
-    } catch (e) {
-      console.log(e);
-    }
+    fetch('http://localhost:8000/api/tasks/', {
+        headers: {
+          'Authorization': `Token ${localStorage.getItem('token')}`,
+        }
+      })
+        .then((response) => response.json())
+        .then(tasksList => {
+            this.setState({ items: tasksList });
+        });
   }
 
   createTasks = item => {
