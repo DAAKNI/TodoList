@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    //this.fetchTasks();
+    this.fetchTasks();
     // try {
     //   const res = await fetch("http://localhost:8000/api/tasks/"); // fetching the data from api, before the page loaded
     //   const items = await res.json();
@@ -44,16 +44,16 @@ class App extends Component {
     //   headers["Authorization"] = `Token ${token}`;
     // }
     fetch('http://localhost:8000/api/tasks/', {
+        method: 'GET',
         headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
           'Authorization': `Token ${localStorage.getItem('token')}`,
-        }
+        },
       })
-        .then((response) => {response.json();
-          console.log("respons"+response.json())}
-        )
+        .then((response) => response.json())
         .then(tasksList => {
             this.setState({ items: tasksList });
-            console.log("list" +tasksList)
         });
   }
 
