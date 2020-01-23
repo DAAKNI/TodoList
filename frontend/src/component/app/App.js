@@ -48,9 +48,12 @@ class App extends Component {
           'Authorization': `Token ${localStorage.getItem('token')}`,
         }
       })
-        .then((response) => response.json())
+        .then((response) => {response.json();
+          console.log("respons"+response.json())}
+        )
         .then(tasksList => {
             this.setState({ items: tasksList });
+            console.log("list" +tasksList)
         });
   }
 
@@ -75,7 +78,7 @@ class App extends Component {
 
   addItem = e => {
     //e.preventDefault();
-    //this.fetchTasks();
+    this.fetchTasks();
     const newItem = this.state.currentItem;
     if (newItem.title !== "") {
       postData(newItem.title);
