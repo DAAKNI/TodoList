@@ -3,16 +3,16 @@ from rest_framework import routers
 
 from . import views
 
-router = routers.DefaultRouter(trailing_slash = False)
+router = routers.DefaultRouter()#(trailing_slash = False)
 router.register('', views.TaskViewSet)
-#router.register('<int:task>', views.TaskDetailView)
+#router.register('<int:pk>', views.TaskDetailView)
 
-app_name = 'tasks'
+#app_name = 'tasks'
 
 urlpatterns = router.urls
-urlpatterns = [
-    path('', include(router.urls))
-]
+# urlpatterns = [
+#     path('', include(router.urls))
+# ]
 
 
 # urlpatterns = [

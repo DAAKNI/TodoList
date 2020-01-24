@@ -8,10 +8,10 @@ from core.models import Task
 
 from . import serializers
 
-#class TaskViewSet(viewsets.ModelViewSet):
-class TaskViewSet(viewsets.GenericViewSet,  
-                  mixins.ListModelMixin,
-                  mixins.CreateModelMixin):
+class TaskViewSet(viewsets.ModelViewSet):
+# class TaskViewSet(viewsets.GenericViewSet,
+#                   mixins.ListModelMixin,
+#                   mixins.CreateModelMixin):
     """Manage tasks in the database"""
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
@@ -27,19 +27,19 @@ class TaskViewSet(viewsets.GenericViewSet,
         serializer.save(user=self.request.user)
 
 
-class TaskDetailView(viewsets.GenericViewSet,
-                  mixins.ListModelMixin,
-                  mixins.CreateModelMixin):
-    """Manage tasks in the database"""
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
-    queryset = Task.objects.all()
-    serializer_class = serializers.TaskSerializer
-
-    def get_queryset(self):
-        """Return objects for the current user only"""
-        return self.queryset.filter(user=self.request.user).order_by('id')
-
-    def perform_create(self, serializer):
-        """Create new task"""
-        serializer.save(user=self.request.user)
+# class TaskDetailView(viewsets.GenericViewSet,
+#                   mixins.ListModelMixin,
+#                   mixins.CreateModelMixin):
+#     """Manage tasks in the database"""
+#     authentication_classes = (TokenAuthentication,)
+#     permission_classes = (IsAuthenticated,)
+#     queryset = Task.objects.all()
+#     serializer_class = serializers.TaskSerializer
+#
+#     def get_queryset(self):
+#         """Return objects for the current user only"""
+#         return self.queryset.filter(user=self.request.user).order_by('id')
+#
+#     def perform_create(self, serializer):
+#         """Create new task"""
+#         serializer.save(user=self.request.user)
