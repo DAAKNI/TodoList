@@ -10,7 +10,7 @@ export function deleteData(item) {
 
   export function checkBoxData(item, check) {
     fetch('http://localhost:8000/api/tasks/' + item, {
-      method: 'patch',
+      method: 'PATCH',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
