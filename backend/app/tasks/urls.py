@@ -5,10 +5,17 @@ from . import views
 
 router = routers.DefaultRouter(trailing_slash = False)
 router.register('', views.TaskViewSet)
+#router.register('<int:task>', views.TaskDetailView)
 
-#app_name = 'tasks'
+app_name = 'tasks'
 
 urlpatterns = router.urls
-#    [
-#    path('', include(router.urls))
-#]
+urlpatterns = [
+    path('', include(router.urls))
+]
+
+
+# urlpatterns = [
+#     path('', views.TaskViewSet),
+#     path('api/tasks/<int:pk>/', views.TaskDetailView),
+# ]

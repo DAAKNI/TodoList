@@ -48,7 +48,7 @@ class App extends Component {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': `Token ${localStorage.getItem('token')}`,
+          'Authorization': `Token ${localStorage.getItem('token')}`
         },
       })
         .then((response) => response.json())

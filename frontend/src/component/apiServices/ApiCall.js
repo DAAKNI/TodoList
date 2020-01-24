@@ -14,6 +14,7 @@ export function deleteData(item) {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'Authorization': `Token ${localStorage.getItem('token')}`
       },
       body: JSON.stringify({
           completed: check,
@@ -34,7 +35,7 @@ export function deleteData(item) {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Token ${localStorage.getItem('token')}`,
+        'Authorization': `Token ${localStorage.getItem('token')}`
       },
       body: JSON.stringify({
         
