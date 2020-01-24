@@ -19,7 +19,7 @@ class TodoItems extends Component {
 
   createTasks = item => {
     return (
-      <li key={item.id}>
+      <li key={item.id} id={item.id} >
         <input
           type="checkbox"
           checked={item.completed}
