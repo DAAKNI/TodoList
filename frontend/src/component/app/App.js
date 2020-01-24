@@ -134,7 +134,7 @@ class App extends Component {
         />
         <button className="clearButton" onClick={this.clearCompleted}>
           {" "}
-          Cleary completed tasks{" "}
+          Clear completed tasks{" "}
         </button>
       </div>
     );

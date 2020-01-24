@@ -1,13 +1,13 @@
 export function deleteData(item) {
     fetch('http://localhost:8000/api/tasks/' + item, {
-      method: 'DELETE'
-      ,
+      method: 'DELETE',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': `Token ${localStorage.getItem('token')}`
       }
-    }).then(response =>
+      })
+      .then(response =>
       response.json().then(json => {
         return json;
       })
@@ -52,6 +52,5 @@ export function deleteData(item) {
           due_date: null,
           user: 1
       })
-      
       })
   }

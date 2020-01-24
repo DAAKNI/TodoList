@@ -41,7 +41,7 @@ class TodoItems extends Component {
       <div>
         {this.state.todos.map(item => (
           <div key={item.id}>
-            <li>{item.title}</li>
+            <li key={item.id}>{item.title}</li>
             <span>{item.id}</span>
           </div>
         ))}
@@ -53,7 +53,12 @@ class TodoItems extends Component {
     const todoEntries = this.props.entries;
     const listItems = todoEntries.map(this.createTasks);
 
-    return <ul className="theList">{listItems}</ul>;
+    return(
+      <div className="todoListItems">
+        <ul className="theList">{listItems}</ul>
+      </div>
+    )  
+        
     //   return (
     //     <div>
     //         <h3>Todos List</h3>
