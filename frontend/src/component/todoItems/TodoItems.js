@@ -19,7 +19,7 @@ class TodoItems extends Component {
 
   createTasks = item => {
     return (
-      <li key={item.id} id={item.id} >
+      <li key={item.id} id={item.id} className={(item.completed ? 'checked' : 'unchecked')}>
         <input
           type="checkbox"
           checked={item.completed}
@@ -30,7 +30,7 @@ class TodoItems extends Component {
           className="deleteButton"
           onClick={() => this.props.deleteItem(item.id)}
         >
-          Delete
+          X
         </button>
       </li>
     );

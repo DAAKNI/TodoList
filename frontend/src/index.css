@@ -29,6 +29,11 @@ ul {
   border-bottom: 1px solid #eee; 
 }
 
+.checked {
+  color: lightgray;
+  text-decoration: line-through; 
+}
+
 
 #root {
   height: 100%;
