@@ -22,7 +22,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.fetchTasks();
+    if(localStorage.getItem('token')) {
+      this.fetchTasks();
+    }
+    
     // try {
     //   const res = await fetch("http://localhost:8000/api/tasks/"); // fetching the data from api, before the page loaded
     //   const items = await res.json();
