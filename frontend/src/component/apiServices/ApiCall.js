@@ -17,8 +17,7 @@ export function deleteData(item) {
         'Authorization': `Token ${localStorage.getItem('token')}`
       },
       body: JSON.stringify({
-          completed: check,
-         
+          "completed": check
       })
       })
   }
