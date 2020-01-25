@@ -5,17 +5,6 @@ class TodoItems extends Component {
   state = {
     todos: []
   };
-  async componentDidMount() {
-    // fetch('http://localhost:8000/api/tasks/', {
-    //     headers: {
-    //       'Authorization': `Token ${localStorage.getItem('token')}`,
-    //     }
-    //   })
-    //     .then((response) => response.json())
-    //     .then(tasksList => {
-    //         this.setState({ items: tasksList });
-    //     });
-  }
 
   createTasks = item => {
     return (
