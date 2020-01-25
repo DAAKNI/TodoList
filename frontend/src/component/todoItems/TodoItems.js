@@ -19,7 +19,7 @@ class TodoItems extends Component {
 
   createTasks = item => {
     return (
-      <li key={item.id} id={item.id} className={(item.completed ? 'checked' : 'unchecked')}>
+      <li key={item.id} className={(item.completed ? 'checked' : '')}>
         <input
           type="checkbox"
           checked={item.completed}
