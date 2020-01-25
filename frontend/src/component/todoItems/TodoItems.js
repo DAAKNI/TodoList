@@ -36,19 +36,6 @@ class TodoItems extends Component {
     );
   };
 
-  todoList() {
-    return (
-      <div>
-        {this.state.todos.map(item => (
-          <div key={item.id}>
-            <li key={item.id}>{item.title}</li>
-            <span>{item.id}</span>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
   render() {
     const todoEntries = this.props.entries;
     const listItems = todoEntries.map(this.createTasks);
@@ -58,13 +45,7 @@ class TodoItems extends Component {
         <ul className="theList">{listItems}</ul>
       </div>
     )  
-        
-    //   return (
-    //     <div>
-    //         <h3>Todos List</h3>
-    //         { this.todoList() }
-    //     </div>
-    // )
+      
   }
 }
 
