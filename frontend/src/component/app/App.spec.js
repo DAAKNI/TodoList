@@ -11,9 +11,11 @@ describe('App', () => {
 
   beforeEach(() => wrapper = shallow(<App />));
 
-  it('should render a <div />', () => {
-    
+  it('should render App', () => {
     expect(wrapper.find('div').length).toEqual(1);
+  });
+  it('should render a Button', () => {
+    expect(wrapper.find('button').length).toEqual(1);
   });
   it('should render the TodoList', () => {
     expect(wrapper.containsMatchingElement(<TodoList />)).toEqual(true);
@@ -24,16 +26,11 @@ describe('App', () => {
   it('should render the TodoItems', () => {
     expect(wrapper.containsMatchingElement(<TodoItems />)).toEqual(true);
   });
-  it('should fetch a list of tasks', function () {
-    const response= App.fetchTasks();
-  
-    
-    expect(response).toBeCalled();
-  });
-  
+  it('calls componentDidMount', () => {
+    jest.spyOn(App.prototype, 'componentDidMount')
+    const wrapper = shallow(<App />)
+    expect(App.prototype.componentDidMount.mock.calls.length).toBe(1)
+  })
+ 
 });
-describe('ToDoList component', () => {
-  describe('when rendered', () => {
-    
-  });
-});
+

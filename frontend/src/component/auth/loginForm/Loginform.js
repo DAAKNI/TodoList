@@ -1,12 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
+//Login Screen Class
 class LoginForm extends React.Component {
   state = {
     email: '',
     password: ''
   };
 
+  //Send Information to Logic
   handle_change = e => {
     const name = e.target.name;
     const value = e.target.value;
@@ -42,7 +42,3 @@ class LoginForm extends React.Component {
 }
 
 export default LoginForm;
-
-// LoginForm.propTypes = {
-//   handle_login: PropTypes.func.isRequired
-// };

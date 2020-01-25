@@ -10,7 +10,7 @@ describe('Logic', () => {
 
   beforeEach(() => wrapper = shallow(<Logic />));
 
-  it('should render a <div />', () => {
+  it('should render Logic', () => {
     
     expect(wrapper.find('div').length).toEqual(1);
   });

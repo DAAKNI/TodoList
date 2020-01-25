@@ -7,7 +7,7 @@ describe('Nav', () => {
 
   beforeEach(() => wrapper = shallow(<Nav />));
 
-  it('should render a <Div />', () => {
+  it('should render a Nav', () => {
     expect(wrapper.find('Div').length).toEqual(0);
   });
   
