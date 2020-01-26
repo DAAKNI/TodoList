@@ -91,15 +91,18 @@ class App extends Component {
   };
 
   addItem = event => {
-    //e.preventDefault();
     const newItem = this.state.currentItem;
     if (newItem.title !== "") {
-      postData(newItem.title);
-      const items = [...this.state.items, newItem];
-      this.setState({
-        items: items,
-        currentItem: { title: "", id: "", completed: false }
+      let response = postData(newItem.title).then((res) => {
+        newItem.id = res.id;
+        const items = [...this.state.items, newItem];
+        this.setState({
+          items: items,
+          currentItem: { title: "", id: "", completed: false }
+        });
       });
+
+      
     }
     event.preventDefault();
   };
