@@ -6,9 +6,15 @@ class TodoItems extends Component {
     todos: []
   };
 
+  componentDidMount() {
+    if (localStorage.getItem("token")) {
+      this.props.fetchTasks();
+    }
+  }
+
   createTasks = item => {
     return (
-      <li key={item.id} className={(item.completed ? 'checked' : '')}>
+      <li key={item.id} className={item.completed ? "checked" : ""}>
         <input
           type="checkbox"
           checked={item.completed}
@@ -33,8 +39,7 @@ class TodoItems extends Component {
       <div className="todoListItems">
         <ul className="theList">{listItems}</ul>
       </div>
-    )  
-      
+    );
   }
 }
 

@@ -34,22 +34,6 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    if (localStorage.getItem("token")) {
-      this.fetchTasks();
-    }
-
-    // try {
-    //   const res = await fetch("http://localhost:8000/api/tasks/"); // fetching the data from api, before the page loaded
-    //   const items = await res.json();
-    //   this.setState({
-    //     items
-    //   });
-    // } catch (e) {
-    //   console.log(e);
-    // }
-  }
-
   handleLogout = () => {
     this.setState({
       loginStatus: "NOT_LOGGED_IN"
@@ -153,6 +137,7 @@ class App extends Component {
                       currentItem={this.state.currentItem}
                     />
                     <TodoItems
+                      fetchTasks={this.fetchTasks}
                       entries={this.state.items}
                       deleteItem={this.deleteItem}
                       toggleCompleted={this.toggleCompleted}
