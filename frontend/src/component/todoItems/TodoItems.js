@@ -5,17 +5,6 @@ class TodoItems extends Component {
   state = {
     todos: []
   };
-  async componentDidMount() {
-    // fetch('http://localhost:8000/api/tasks/', {
-    //     headers: {
-    //       'Authorization': `Token ${localStorage.getItem('token')}`,
-    //     }
-    //   })
-    //     .then((response) => response.json())
-    //     .then(tasksList => {
-    //         this.setState({ items: tasksList });
-    //     });
-  }
 
   createTasks = item => {
     return (
@@ -40,12 +29,16 @@ class TodoItems extends Component {
     const todoEntries = this.props.entries;
     const listItems = todoEntries.map(this.createTasks);
 
+<<<<<<< HEAD
+    return <ul className="theList">{listItems}</ul>;
+=======
     return(
       <div className="todoListItems">
         <ul className="theList">{listItems}</ul>
       </div>
     )  
       
+>>>>>>> master
   }
 }
 

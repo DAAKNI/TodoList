@@ -7,11 +7,7 @@ export function deleteData(item) {
         'Authorization': `Token ${localStorage.getItem('token')}`
       }
       })
-      .then(response =>
-      response.json().then(json => {
-        return json;
-      })
-    );
+      
   }
 
   export function checkBoxData(item, check) {
