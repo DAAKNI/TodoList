@@ -11,20 +11,20 @@ describe('App', () => {
 
   beforeEach(() => wrapper = shallow(<App />));
 
-  it('should render App', () => {
-    expect(wrapper.find('div').length).toEqual(1);
+  it('should not render App', () => {
+    expect(wrapper.find('div').length).toEqual(0);
   });
-  it('should render a Button', () => {
-    expect(wrapper.find('button').length).toEqual(1);
+  it('should not render a Button', () => {
+    expect(wrapper.find('button').length).toEqual(0);
   });
-  it('should render the TodoList', () => {
-    expect(wrapper.containsMatchingElement(<TodoList />)).toEqual(true);
+  it('should not render the TodoList', () => {
+    expect(wrapper.containsMatchingElement(<TodoList />)).toEqual(false);
   });
-  it('should render the NavBar', () => {
-    expect(wrapper.containsMatchingElement(<NavBar />)).toEqual(true);
+  it('should not render the NavBar', () => {
+    expect(wrapper.containsMatchingElement(<NavBar />)).toEqual(false);
   });
-  it('should render the TodoItems', () => {
-    expect(wrapper.containsMatchingElement(<TodoItems />)).toEqual(true);
+  it('should not render the TodoItems', () => {
+    expect(wrapper.containsMatchingElement(<TodoItems />)).toEqual(false);
   });
   it('calls componentDidMount', () => {
     jest.spyOn(App.prototype, 'componentDidMount')

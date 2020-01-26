@@ -17,10 +17,10 @@ describe('Logic', () => {
   it('should render the Nav', () => {
     expect(wrapper.containsMatchingElement(<Nav />)).toEqual(true);
   });
-  it('should render the LoginForm', () => {
+  it('should not render the LoginForm', () => {
     expect(wrapper.containsMatchingElement(<LoginForm />)).toEqual(false);
   });
-  it('should render the SignupForm', () => {
+  it('should not render the SignupForm', () => {
     expect(wrapper.containsMatchingElement(<SignupForm />)).toEqual(false);
   });
 });
