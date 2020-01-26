@@ -12,7 +12,7 @@ class Logic extends Component {
       logged_in: localStorage.getItem("token") ? true : false,
       email: "",
       name: "",
-      redirect: false
+      loginStatus: "NOT_LOGGED_IN"
     };
   }
 
@@ -46,7 +46,7 @@ class Logic extends Component {
           logged_in: true,
           displayed_form: "",
           name: json.name,
-          redirect: true
+          loginStatus: "LOGGED_IN"
         });
       });
   };
@@ -73,7 +73,7 @@ class Logic extends Component {
 
   handle_logout = () => {
     localStorage.removeItem("token");
-    this.setState({ logged_in: false, name: "" });
+    this.setState({ logged_in: false, name: "", loginStatus: "NOT_LOGGED_IN" });
   };
 
   display_form = form => {
@@ -95,8 +95,10 @@ class Logic extends Component {
         form = null;
     }
 
-    if (this.state.redirect) {
+    if (this.state.loginStatus === "LOGGED_IN") {
       return <Redirect push to="/app" />;
+    } else if (this.state.loginStatus === "NOT_LOGGED_IN") {
+      return <Redirect push to="/" />;
     }
 
     return (

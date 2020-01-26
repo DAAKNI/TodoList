@@ -29,7 +29,8 @@ class App extends Component {
         title: "",
         id: "",
         completed: false
-      }
+      },
+      loginStatus: "LOGGED_IN"
     };
   }
 
@@ -48,6 +49,12 @@ class App extends Component {
     //   console.log(e);
     // }
   }
+
+  handleLogout = () => {
+    this.setState({
+      loginStatus: "NOT_LOGGED_IN"
+    });
+  };
 
   fetchTasks = () => {
     let token;
@@ -93,7 +100,7 @@ class App extends Component {
   addItem = event => {
     const newItem = this.state.currentItem;
     if (newItem.title !== "") {
-      let response = postData(newItem.title).then((res) => {
+      let response = postData(newItem.title).then(res => {
         newItem.id = res.id;
         const items = [...this.state.items, newItem];
         this.setState({
@@ -101,8 +108,6 @@ class App extends Component {
           currentItem: { title: "", id: "", completed: false }
         });
       });
-
-      
     }
     event.preventDefault();
   };
