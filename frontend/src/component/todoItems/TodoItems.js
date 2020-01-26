@@ -1,14 +1,19 @@
 import React, { Component } from "react";
 
-
 class TodoItems extends Component {
   state = {
     todos: []
   };
 
+  componentDidMount() {
+    if (localStorage.getItem("token")) {
+      this.props.fetchTasks();
+    }
+  }
+
   createTasks = item => {
     return (
-      <li key={item.id} className={(item.completed ? 'checked' : '')}>
+      <li key={item.id} className={item.completed ? "checked" : ""}>
         <input
           type="checkbox"
           checked={item.completed}
@@ -19,7 +24,7 @@ class TodoItems extends Component {
           className="deleteButton"
           onClick={() => this.props.deleteItem(item.id)}
         >
-          <img src={require('fonts/trash.svg')} />
+          <img src={require("fonts/trash.svg")} />
         </button>
       </li>
     );
@@ -33,8 +38,7 @@ class TodoItems extends Component {
       <div className="todoListItems">
         <ul className="theList">{listItems}</ul>
       </div>
-    )  
-      
+    );
   }
 }
 

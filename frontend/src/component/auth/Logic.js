@@ -63,13 +63,9 @@ class Logic extends Component {
       },
       body: JSON.stringify(data)
     })
-      .then(res => res.json())
-      .then(json => {
-        localStorage.setItem("token", json.token);
+      .then(json => {    
         this.setState({
-          logged_in: true,
-          displayed_form: "",
-          name: json.name
+          loginStatus: "LOGGED_IN"
         });
       });
   };
@@ -108,14 +104,18 @@ class Logic extends Component {
       return <Redirect push to="/login" />;
     }
 
+    if (this.state.logged_in) {
+      return <Redirect push to="/" />;
+    }
+
     return (
-      <div className="Logic">
+      <div className="loginScreen">
         <Nav
           logged_in={this.state.logged_in}
           display_form={this.display_form}
           handle_logout={this.handle_logout}
         />
-        <h3>{this.state.logged_in ? "Willkommen Zurück!" : "Please Log In"}</h3>
+        <h3>{this.state.logged_in ? "" : ""}</h3>
         {form}
       </div>
     );
