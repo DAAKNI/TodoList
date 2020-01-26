@@ -131,6 +131,16 @@ button.clearButton svg {
   height: 3em;
   background-color: #edf0f1;
 }
+button.logout {
+  margin-top: 1em;
+  background-color: #edf0f1;
+}
+button.logout svg {
+  width: 3em;
+  height: 3em;
+  background-color: #edf0f1;
+}
+
 
 button.clearButton img {
   width: 3em;
@@ -143,6 +153,12 @@ button.clearButton img {
 }
 #root {
   height: 100%;
+}
+
+nav {
+  text-align: center;
+  font-size: 1.5em;
+  color: gray;
 }
 
 @media screen and (max-width: 400px) {

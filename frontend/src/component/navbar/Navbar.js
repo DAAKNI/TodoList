@@ -2,7 +2,7 @@ import React from "react";
 
 const NavBar = props => {
   return (
-    <nav style={{ backgroundColor: "lightgrey", marginBottom: "10px" }}>
+    <nav>
       <div>
         <span>{props.totalItems} tasks unfinished</span>
       </div>

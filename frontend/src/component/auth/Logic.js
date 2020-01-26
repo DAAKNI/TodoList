@@ -115,7 +115,7 @@ class Logic extends Component {
           display_form={this.display_form}
           handle_logout={this.handle_logout}
         />
-        <h3>{this.state.logged_in ? "Willkommen Zurück!" : "Please Log In"}</h3>
+        <h3>{this.state.logged_in ? "" : "Please Log In"}</h3>
         {form}
       </div>
     );
