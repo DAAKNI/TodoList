@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
-import {postData} from "../apiServices/ApiCall"
-=======
-import "./TodoList.css";
->>>>>>> master
+
 
 class TodoList extends Component {
   componentDidUpdate() {
