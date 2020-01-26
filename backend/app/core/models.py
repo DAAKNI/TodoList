@@ -39,7 +39,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
 
 class Task(models.Model):
-    """Representation of a Tag"""
+    """Representation of a single todo/task"""
     title = models.CharField(max_length=255)
     completed = models.BooleanField(default=False)
     priority = models.PositiveIntegerField(blank=True, null=True)
@@ -49,6 +49,7 @@ class Task(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
+        blank=True
     )
 
     def __str__(self):
