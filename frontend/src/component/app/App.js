@@ -129,7 +129,11 @@ class App extends Component {
               } else {
                 return (
                   <div className="App">
-                    <Logic />
+                    <Logic
+                      totalItems={
+                        this.state.items.filter(item => !item.completed).length
+                      }
+                    />
                     <TodoList
                       addItem={this.addItem}
                       inputElement={this.inputElement}
