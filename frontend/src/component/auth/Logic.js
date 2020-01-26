@@ -12,7 +12,7 @@ class Logic extends Component {
       logged_in: localStorage.getItem("token") ? true : false,
       email: "",
       name: "",
-      loginStatus: "NOT_LOGGED_IN"
+      loginStatus: ""
     };
   }
 
@@ -96,13 +96,15 @@ class Logic extends Component {
     }
 
     if (this.state.loginStatus === "LOGGED_IN") {
-      return <Redirect push to="/app" />;
-    } else if (this.state.loginStatus === "NOT_LOGGED_IN") {
       return <Redirect push to="/" />;
     }
 
+    if (this.state.loginStatus === "NOT_LOGGED_IN") {
+      return <Redirect push to="/login" />;
+    }
+
     return (
-      <div className="App">
+      <div className="Logic">
         <Nav
           logged_in={this.state.logged_in}
           display_form={this.display_form}

@@ -135,34 +135,40 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route path="/" exact component={Logic} />
+          <Route exact path="/login" component={Logic} />
           <Route
-            path="/app"
+            path="/"
             exact
             render={() => {
-              return (
-                <div className="App">
-                  <Logic />
-                  <TodoList
-                    addItem={this.addItem}
-                    inputElement={this.inputElement}
-                    handleInput={this.handleInput}
-                    currentItem={this.state.currentItem}
-                  />
-                  <TodoItems
-                    entries={this.state.items}
-                    deleteItem={this.deleteItem}
-                    toggleCompleted={this.toggleCompleted}
-                  />
-                  <button className="clearButton" onClick={this.clearCompleted}>
-                    {" "}
-                    Clear completed tasks{" "}
-                  </button>
-                </div>
-              );
+              if (localStorage.getItem("token") === null) {
+                return <Redirect push to="/login" />;
+              } else {
+                return (
+                  <div className="App">
+                    <Logic />
+                    <TodoList
+                      addItem={this.addItem}
+                      inputElement={this.inputElement}
+                      handleInput={this.handleInput}
+                      currentItem={this.state.currentItem}
+                    />
+                    <TodoItems
+                      entries={this.state.items}
+                      deleteItem={this.deleteItem}
+                      toggleCompleted={this.toggleCompleted}
+                    />
+                    <button
+                      className="clearButton"
+                      onClick={this.clearCompleted}
+                    >
+                      {" "}
+                      Clear completed tasks{" "}
+                    </button>
+                  </div>
+                );
+              }
             }}
           />
-          <Route path="/logout" exact component={Logic} />
         </Switch>
       </Router>
     );
