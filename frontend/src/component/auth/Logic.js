@@ -95,7 +95,7 @@ class Logic extends Component {
     }
 
     return (
-      <div className="Logic">
+      <div className="loginScreen">
         <Nav
           logged_in={this.state.logged_in}
           display_form={this.display_form}

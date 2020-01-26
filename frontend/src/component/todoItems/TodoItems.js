@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./TodoItems.css";
+
 
 class TodoItems extends Component {
   state = {
@@ -25,7 +25,7 @@ class TodoItems extends Component {
           className="deleteButton"
           onClick={() => this.props.deleteItem(item.id)}
         >
-          X
+          <img src={require('fonts/trash.svg')} />
         </button>
       </li>
     );
