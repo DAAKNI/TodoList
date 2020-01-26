@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 function Nav(props) {
   const logged_out_nav = (
     <ul>
-      <li onClick={() => props.display_form("login")}>login</li>
-      <li onClick={() => props.display_form("signup")}>signup</li>
+      <li onClick={() => props.display_form("login")}><button>login</button></li>
+      <li onClick={() => props.display_form("signup")}><button>signup</button></li>
     </ul>
   );
 

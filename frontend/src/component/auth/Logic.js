@@ -109,13 +109,13 @@ class Logic extends Component {
     }
 
     return (
-      <div className="Logic">
+      <div className="loginScreen">
         <Nav
           logged_in={this.state.logged_in}
           display_form={this.display_form}
           handle_logout={this.handle_logout}
         />
-        <h3>{this.state.logged_in ? "" : "Please Log In"}</h3>
+        <h3>{this.state.logged_in ? "" : ""}</h3>
         {form}
       </div>
     );
