@@ -29,12 +29,16 @@ class TodoItems extends Component {
     const todoEntries = this.props.entries;
     const listItems = todoEntries.map(this.createTasks);
 
+<<<<<<< HEAD
+    return <ul className="theList">{listItems}</ul>;
+=======
     return(
       <div className="todoListItems">
         <ul className="theList">{listItems}</ul>
       </div>
     )  
       
+>>>>>>> master
   }
 }
 

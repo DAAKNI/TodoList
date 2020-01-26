@@ -3,6 +3,7 @@ import Nav from './nav/Nav';
 import LoginForm from './loginForm/LoginForm';
 import SignupForm from './signupForm/SignupForm';
 
+//Main Class for Authentifizierung
 class Logic extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +30,7 @@ class Logic extends Component {
   //   }
   }
 
+  //Api Call to get the User Token
   handle_login = (e, data) => {
     e.preventDefault();
     fetch('http://localhost:8000/api/user/token/', {
@@ -49,6 +51,7 @@ class Logic extends Component {
       });
   };
 
+  //Api Call to create an user and get his Token
   handle_signup = (e, data) => {
     e.preventDefault();
     fetch('http://localhost:8000/api/user/create/', {
@@ -69,11 +72,13 @@ class Logic extends Component {
       });
   };
 
+  //Removes the Token
   handle_logout = () => {
     localStorage.removeItem('token');
     this.setState({ logged_in: false, name: '' });
   };
 
+  //Set Diplay to Login or SignIn
   display_form = form => {
     this.setState({
       displayed_form: form
