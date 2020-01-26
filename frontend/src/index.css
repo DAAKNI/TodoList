@@ -153,6 +153,7 @@ button.clearButton img {
 }
 #root {
   height: 100%;
+  width: 100%;
 }
 
 nav {
@@ -162,24 +163,44 @@ nav {
 }
 
 .loginScreen {
-  margin: auto;
+  width: 400px;
+  height: 600px;
+  margin: 1em auto;
+  background-color: white;
+  border: gray;
+  padding: 1em;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
+
 .loginScreen ul {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
+  margin: auto;
 
+}
+.loginScreen input {
+  border: 0;
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 1em;
+}
+.loginScreen form {
+  margin: auto;
 }
 
 .loginScreen button {
   padding: 1em 0.5em;
-  border-radius: 0.5em;
-  border: 1px solid #448aff;
+  border: 0;
+  background-color: white;
+  margin: 1em;
 }
+
 @media screen and (max-width: 400px) {
-  .github-fork-ribbon {
-    display: none;
-  }
+
 }
 
 @media (min-width: 400px) and (min-height: 400px) {

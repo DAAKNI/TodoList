@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 function Nav(props) {
   const logged_out_nav = (
     <ul>
-      <li onClick={() => props.display_form("login")}><button>login</button></li>
-      <li onClick={() => props.display_form("signup")}><button>signup</button></li>
+      <li onClick={() => props.display_form("login")}><button>Login</button></li>
+      <li onClick={() => props.display_form("signup")}><button>Signup</button></li>
     </ul>
   );
 
@@ -17,7 +17,7 @@ function Nav(props) {
         </button></li>
     </ul>
   );
-  return <div>{props.logged_in ? logged_in_nav : logged_out_nav}</div>;
+  return <div className="foo">{ props.logged_in ? logged_in_nav : logged_out_nav}</div>;
 }
 
 export default Nav;
