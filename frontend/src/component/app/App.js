@@ -1,10 +1,23 @@
 import React, { Component } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 import "./App.css";
 import TodoList from "../todoList/TodoList";
 import TodoItems from "../todoItems/TodoItems";
 import NavBar from "../navbar/Navbar";
-import {deleteData, checkBoxData, postData} from "../apiServices/ApiCall"
-import Logic from "../auth/Logic"
+import { deleteData, checkBoxData, postData } from "../apiServices/ApiCall";
+import Logic from "../auth/Logic";
+
+/*
+Login
+show tasks when logged in (routes)
+sort
+checkbox doesn function
+*/
 
 class App extends Component {
   inputElement = React.createRef();
@@ -17,15 +30,14 @@ class App extends Component {
         id: "",
         completed: false
       }
-
     };
   }
 
   componentDidMount() {
-    if(localStorage.getItem('token')) {
+    if (localStorage.getItem("token")) {
       this.fetchTasks();
     }
-    
+
     // try {
     //   const res = await fetch("http://localhost:8000/api/tasks/"); // fetching the data from api, before the page loaded
     //   const items = await res.json();
@@ -36,36 +48,35 @@ class App extends Component {
     //   console.log(e);
     // }
   }
+
   fetchTasks = () => {
-    let token
-    if(localStorage.getItem('token') != null){
-      token = localStorage.getItem('token');
+    let token;
+    if (localStorage.getItem("token") != null) {
+      token = localStorage.getItem("token");
     }
-    
 
     // if (token) {
     //   headers["Authorization"] = `Token ${token}`;
     // }
-    fetch('http://localhost:8000/api/tasks/', {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': `Token ${localStorage.getItem('token')}`
-        }
-      })
-        .then((response) => response.json())
-        .then(tasksList => {
-            this.setState({ items: tasksList });
-        });
-  }
+    fetch("http://localhost:8000/api/tasks/", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Token ${localStorage.getItem("token")}`
+      }
+    })
+      .then(response => response.json())
+      .then(tasksList => {
+        this.setState({ items: tasksList });
+      });
+  };
 
   deleteItem = id => {
     deleteData(id);
     const filteredItems = this.state.items.filter(item => {
       return item.id !== id;
     });
-    //deleteData(item.id);
     this.setState({
       items: filteredItems
     });
@@ -73,7 +84,7 @@ class App extends Component {
 
   handleInput = e => {
     const itemText = e.target.value;
-    const currentItem = { title: itemText, key: Date.now(), completed: false };
+    const currentItem = { title: itemText, id: Date.now(), completed: false };
     this.setState({
       currentItem
     });
@@ -81,7 +92,6 @@ class App extends Component {
 
   addItem = event => {
     //e.preventDefault();
-    //this.fetchTasks();
     const newItem = this.state.currentItem;
     if (newItem.title !== "") {
       postData(newItem.title);
@@ -107,7 +117,7 @@ class App extends Component {
   clearCompleted = () => {
     const newItemsChecked = this.state.items.filter(item => item.completed);
     const newItems = this.state.items.filter(item => !item.completed);
-    newItemsChecked.map(newItems => (deleteData( newItems.id)))
+    newItemsChecked.map(newItems => deleteData(newItems.id));
     this.setState({
       items: newItems
     });
@@ -115,28 +125,38 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Logic
-        />
-        <NavBar
-          totalItems={this.state.items.filter(item => !item.completed).length}
-        />
-        <TodoList
-          addItem={this.addItem}
-          inputElement={this.inputElement}
-          handleInput={this.handleInput}
-          currentItem={this.state.currentItem}
-        />
-        <TodoItems
-          entries={this.state.items}
-          deleteItem={this.deleteItem}
-          toggleCompleted={this.toggleCompleted}
-        />
-        <button className="clearButton" onClick={this.clearCompleted}>
-          {" "}
-          Clear completed tasks{" "}
-        </button>
-      </div>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Logic} />
+          <Route
+            path="/app"
+            exact
+            render={() => {
+              return (
+                <div className="App">
+                  <Logic />
+                  <TodoList
+                    addItem={this.addItem}
+                    inputElement={this.inputElement}
+                    handleInput={this.handleInput}
+                    currentItem={this.state.currentItem}
+                  />
+                  <TodoItems
+                    entries={this.state.items}
+                    deleteItem={this.deleteItem}
+                    toggleCompleted={this.toggleCompleted}
+                  />
+                  <button className="clearButton" onClick={this.clearCompleted}>
+                    {" "}
+                    Clear completed tasks{" "}
+                  </button>
+                </div>
+              );
+            }}
+          />
+          <Route path="/logout" exact component={Logic} />
+        </Switch>
+      </Router>
     );
   }
 }

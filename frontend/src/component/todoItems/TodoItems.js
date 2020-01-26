@@ -5,21 +5,14 @@ class TodoItems extends Component {
   state = {
     todos: []
   };
-  async componentDidMount() {
-    // fetch('http://localhost:8000/api/tasks/', {
-    //     headers: {
-    //       'Authorization': `Token ${localStorage.getItem('token')}`,
-    //     }
-    //   })
-    //     .then((response) => response.json())
-    //     .then(tasksList => {
-    //         this.setState({ items: tasksList });
-    //     });
-  }
 
   createTasks = item => {
     return (
-      <li key={item.id} id={item.id} className={(item.completed ? 'checked' : 'unchecked')}>
+      <li
+        key={item.id}
+        id={item.id}
+        className={item.completed ? "checked" : "unchecked"}
+      >
         <input
           type="checkbox"
           checked={item.completed}
@@ -53,12 +46,12 @@ class TodoItems extends Component {
     const todoEntries = this.props.entries;
     const listItems = todoEntries.map(this.createTasks);
 
-    return(
+    return (
       <div className="todoListItems">
         <ul className="theList">{listItems}</ul>
       </div>
-    )  
-        
+    );
+
     //   return (
     //     <div>
     //         <h3>Todos List</h3>
