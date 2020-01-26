@@ -1,10 +1,12 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 function Nav(props) {
   const logged_out_nav = (
     <ul>
-      <li onClick={() => props.display_form('login')}>login</li>
-      <li onClick={() => props.display_form('signup')}>signup</li>
+      <li onClick={() => props.display_form("login")}>login</li>
+      <li onClick={() => props.display_form("signup")}>signup</li>
     </ul>
   );
 

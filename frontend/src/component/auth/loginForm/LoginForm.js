@@ -1,9 +1,10 @@
-import React from 'react';
-//Login Screen Class
+import React from "react";
+import PropTypes from "prop-types";
+
 class LoginForm extends React.Component {
   state = {
-    email: '',
-    password: ''
+    email: "",
+    password: ""
   };
 
   //Send Information to Logic

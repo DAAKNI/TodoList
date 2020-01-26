@@ -29,7 +29,7 @@ class TodoItems extends Component {
     const todoEntries = this.props.entries;
     const listItems = todoEntries.map(this.createTasks);
 
-    return(
+    return (
       <div className="todoListItems">
         <ul className="theList">{listItems}</ul>
       </div>
