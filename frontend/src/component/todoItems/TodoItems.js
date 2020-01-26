@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-
 class TodoItems extends Component {
   state = {
     todos: []
@@ -25,7 +24,7 @@ class TodoItems extends Component {
           className="deleteButton"
           onClick={() => this.props.deleteItem(item.id)}
         >
-          <img src={require('fonts/trash.svg')} />
+          <img src={require("fonts/trash.svg")} />
         </button>
       </li>
     );

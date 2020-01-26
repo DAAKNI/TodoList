@@ -12,13 +12,6 @@ import NavBar from "../navbar/Navbar";
 import { deleteData, checkBoxData, postData } from "../apiServices/ApiCall";
 import Logic from "../auth/Logic";
 
-/*
-Login
-show tasks when logged in (routes)
-sort
-checkbox doesn function
-*/
-
 class App extends Component {
   inputElement = React.createRef();
   constructor() {
@@ -29,16 +22,9 @@ class App extends Component {
         title: "",
         id: "",
         completed: false
-      },
-      loginStatus: "LOGGED_IN"
+      }
     };
   }
-
-  handleLogout = () => {
-    this.setState({
-      loginStatus: "NOT_LOGGED_IN"
-    });
-  };
 
   fetchTasks = () => {
     let token;
@@ -117,7 +103,6 @@ class App extends Component {
 
   render() {
     return (
-
       <Router>
         <Switch>
           <Route exact path="/login" component={Logic} />
@@ -131,32 +116,31 @@ class App extends Component {
                 return (
                   <div className="App">
                     <header>
-                      <TodoList
-                        addItem={this.addItem}
-                        inputElement={this.inputElement}
-                        handleInput={this.handleInput}
-                        currentItem={this.state.currentItem}
-                      />
+                    <TodoList
+                      addItem={this.addItem}
+                      inputElement={this.inputElement}
+                      handleInput={this.handleInput}
+                      currentItem={this.state.currentItem}
+                    />
                     </header>
                     <div className="container">
-                    <Logic
-                      totalItems={
-                        this.state.items.filter(item => !item.completed).length
-                      }
-                    />
-                      {/* <NavBar
+                      <Logic />
+                      <NavBar
                         totalItems={this.state.items.filter(item => !item.completed).length}
-                      /> */}
-                      <TodoItems
-                        entries={this.state.items}
-                        deleteItem={this.deleteItem}
-                        toggleCompleted={this.toggleCompleted}
                       />
-                      <button className="clearButton" onClick={this.clearCompleted}>
-                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="dumpster" className="svg-inline--fa fa-dumpster fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M560 160c10.4 0 18-9.8 15.5-19.9l-24-96C549.7 37 543.3 32 536 32h-98.9l25.6 128H560zM272 32H171.5l-25.6 128H272V32zm132.5 0H304v128h126.1L404.5 32zM16 160h97.3l25.6-128H40c-7.3 0-13.7 5-15.5 12.1l-24 96C-2 150.2 5.6 160 16 160zm544 64h-20l4-32H32l4 32H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h28l20 160v16c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-16h320v16c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-16l20-160h28c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16z"></path></svg>
-                      </button>
 
+                    <TodoItems
+                      fetchTasks={this.fetchTasks}
+                      entries={this.state.items}
+                      deleteItem={this.deleteItem}
+                      toggleCompleted={this.toggleCompleted}
+                    />
+                    <button className="clearButton" onClick={this.clearCompleted}>
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="dumpster" className="svg-inline--fa fa-dumpster fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M560 160c10.4 0 18-9.8 15.5-19.9l-24-96C549.7 37 543.3 32 536 32h-98.9l25.6 128H560zM272 32H171.5l-25.6 128H272V32zm132.5 0H304v128h126.1L404.5 32zM16 160h97.3l25.6-128H40c-7.3 0-13.7 5-15.5 12.1l-24 96C-2 150.2 5.6 160 16 160zm544 64h-20l4-32H32l4 32H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h28l20 160v16c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-16h320v16c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-16l20-160h28c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16z"></path></svg>
+
+                    </button>
                     </div>
+
                   </div>
                 );
               }
@@ -164,7 +148,6 @@ class App extends Component {
           />
         </Switch>
       </Router>
-
     );
   }
 }

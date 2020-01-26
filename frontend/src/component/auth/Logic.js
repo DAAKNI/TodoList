@@ -17,6 +17,20 @@ class Logic extends Component {
     };
   }
 
+  componentDidMount() {
+    //   if (this.state.logged_in) {
+    //     fetch('http://localhost:8000/api/user/token/', {
+    //       headers: {
+    //         Authorization: `JWT ${localStorage.getItem('token')}`
+    //       }
+    //     })
+    //       .then(res => res.json())
+    //       .then(json => {
+    //         this.setState({ name: json.name });
+    //       });
+    //   }
+  }
+
   //Api Call to get the User Token
   handle_login = (e, data) => {
     e.preventDefault();
@@ -55,7 +69,8 @@ class Logic extends Component {
         this.setState({
           logged_in: true,
           displayed_form: "",
-          name: json.name
+          name: json.name,
+          loginStatus: "LOGGED_IN"
         });
       });
   };
@@ -101,13 +116,7 @@ class Logic extends Component {
           display_form={this.display_form}
           handle_logout={this.handle_logout}
         />
-        <h3>
-          {this.state.logged_in ? (
-            <span>{this.props.totalItems} tasks unfinished</span>
-          ) : (
-            "Please Log In"
-          )}
-        </h3>
+        <h3>{this.state.logged_in ? "" : "Please Log In"}</h3>
         {form}
       </div>
     );
