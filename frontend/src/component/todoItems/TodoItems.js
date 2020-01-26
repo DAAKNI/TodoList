@@ -19,7 +19,7 @@ class TodoItems extends Component {
 
   createTasks = item => {
     return (
-      <li key={item.id}>
+      <li key={item.id} className={(item.completed ? 'checked' : '')}>
         <input
           type="checkbox"
           checked={item.completed}
@@ -30,30 +30,26 @@ class TodoItems extends Component {
           className="deleteButton"
           onClick={() => this.props.deleteItem(item.id)}
         >
-          Delete
+          X
         </button>
       </li>
     );
   };
 
-  todoList() {
-    return (
-      <div>
-        {this.state.todos.map(item => (
-          <div key={item.id}>
-            <li>{item.title}</li>
-            <span>{item.id}</span>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
   render() {
     const todoEntries = this.props.entries;
     const listItems = todoEntries.map(this.createTasks);
 
+<<<<<<< HEAD
     return <ul className="theList">{listItems}</ul>;
+=======
+    return(
+      <div className="todoListItems">
+        <ul className="theList">{listItems}</ul>
+      </div>
+    )  
+      
+>>>>>>> master
   }
 }
 

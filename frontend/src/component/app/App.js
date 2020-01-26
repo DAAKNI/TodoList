@@ -52,7 +52,7 @@ class App extends Component {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'Authorization': `Token ${localStorage.getItem('token')}`
-        },
+        }
       })
         .then((response) => response.json())
         .then(tasksList => {
@@ -79,9 +79,9 @@ class App extends Component {
     });
   };
 
-  addItem = e => {
+  addItem = event => {
     //e.preventDefault();
-    this.fetchTasks();
+    //this.fetchTasks();
     const newItem = this.state.currentItem;
     if (newItem.title !== "") {
       postData(newItem.title);
@@ -91,6 +91,7 @@ class App extends Component {
         currentItem: { title: "", id: "", completed: false }
       });
     }
+    event.preventDefault();
   };
 
   toggleCompleted = id => {
@@ -133,7 +134,7 @@ class App extends Component {
         />
         <button className="clearButton" onClick={this.clearCompleted}>
           {" "}
-          Cleary completed tasks{" "}
+          Clear completed tasks{" "}
         </button>
       </div>
     );
