@@ -26,11 +26,7 @@ describe('App', () => {
   it('should not render the TodoItems', () => {
     expect(wrapper.containsMatchingElement(<TodoItems />)).toEqual(false);
   });
-  it('calls componentDidMount', () => {
-    jest.spyOn(App.prototype, 'componentDidMount')
-    const wrapper = shallow(<App />)
-    expect(App.prototype.componentDidMount.mock.calls.length).toBe(1)
-  })
+  
  
 });
 
