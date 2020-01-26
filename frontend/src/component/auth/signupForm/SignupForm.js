@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
+//Class for SignIn
 class SignupForm extends React.Component {
   state = {
     email: '',
@@ -8,6 +8,7 @@ class SignupForm extends React.Component {
     name:''
   };
 
+  //Send Logic Information
   handle_change = e => {
     const name = e.target.name;
     const value = e.target.value;
@@ -50,7 +51,3 @@ class SignupForm extends React.Component {
 }
 
 export default SignupForm;
-
-// SignupForm.propTypes = {
-//   handle_signup: PropTypes.func.isRequired
-// };

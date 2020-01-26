@@ -8,11 +8,7 @@ class TodoItems extends Component {
 
   createTasks = item => {
     return (
-      <li
-        key={item.id}
-        id={item.id}
-        className={item.completed ? "checked" : "unchecked"}
-      >
+      <li key={item.id} className={(item.completed ? 'checked' : '')}>
         <input
           type="checkbox"
           checked={item.completed}
@@ -29,19 +25,6 @@ class TodoItems extends Component {
     );
   };
 
-  todoList() {
-    return (
-      <div>
-        {this.state.todos.map(item => (
-          <div key={item.id}>
-            <li key={item.id}>{item.title}</li>
-            <span>{item.id}</span>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
   render() {
     const todoEntries = this.props.entries;
     const listItems = todoEntries.map(this.createTasks);
@@ -50,14 +33,8 @@ class TodoItems extends Component {
       <div className="todoListItems">
         <ul className="theList">{listItems}</ul>
       </div>
-    );
-
-    //   return (
-    //     <div>
-    //         <h3>Todos List</h3>
-    //         { this.todoList() }
-    //     </div>
-    // )
+    )  
+      
   }
 }
 
