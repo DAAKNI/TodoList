@@ -7,3 +7,8 @@ router = routers.DefaultRouter(trailing_slash = False)
 router.register('', views.TaskViewSet)
 
 urlpatterns = router.urls
+
+urlpatterns_ = [
+    path('api/tasks/', views.TaskViewSet),
+    path('api/tasks/<int:pk>/', views.TaskViewSet),
+]

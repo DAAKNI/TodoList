@@ -18,17 +18,7 @@ class Logic extends Component {
   }
 
   componentDidMount() {
-    //   if (this.state.logged_in) {
-    //     fetch('http://localhost:8000/api/user/token/', {
-    //       headers: {
-    //         Authorization: `JWT ${localStorage.getItem('token')}`
-    //       }
-    //     })
-    //       .then(res => res.json())
-    //       .then(json => {
-    //         this.setState({ name: json.name });
-    //       });
-    //   }
+
   }
 
   //Api Call to get the User Token
@@ -63,7 +53,7 @@ class Logic extends Component {
       },
       body: JSON.stringify(data)
     })
-      .then(json => {    
+      .then(json => {
         this.setState({
           loginStatus: "LOGGED_IN"
         });

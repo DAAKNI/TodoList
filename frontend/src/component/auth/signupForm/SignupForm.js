@@ -5,7 +5,7 @@ class SignupForm extends React.Component {
   state = {
     email: '',
     password: '',
-    name:''
+    name: ''
   };
 
   //Send Logic Information
@@ -23,29 +23,29 @@ class SignupForm extends React.Component {
     return (
       <form onSubmit={e => this.props.handle_signup(e, this.state)}>
         <h4>Sign Up</h4>
-        <label htmlFor="email">Email:</label><br/>
+        <label htmlFor="email">Email:</label><br />
         <input
           type="text"
           name="email"
           value={this.state.email}
           onChange={this.handle_change}
-        /><br/>
-        <label htmlFor="name">Name:</label><br/>
+        /><br />
+        <label htmlFor="name">Name:</label><br />
         <input
           type="text"
           name="name"
           value={this.state.name}
           onChange={this.handle_change}
-        /><br/>
-        <label htmlFor="password">Password:</label><br/>
+        /><br />
+        <label htmlFor="password">Password:</label><br />
         <input
           type="password"
           name="password"
           value={this.state.password}
           onChange={this.handle_change}
-        /><br/>
-         
-        <input type="submit" value="SignUp"/>
+        /><br />
+
+        <input type="submit" value="SignUp" />
       </form>
     );
   }

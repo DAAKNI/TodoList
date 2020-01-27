@@ -10,5 +10,5 @@ describe('Nav', () => {
   it('should render a Nav', () => {
     expect(wrapper.find('Div').length).toEqual(0);
   });
-  
+
 });

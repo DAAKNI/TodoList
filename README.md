@@ -1,4 +1,13 @@
-# modest monkey project
+# Modest Monkey
+## TodoList
+ - Altrichter Taro (ta029) - 
+ - Knizia Daniel (dk100) - 33644
+ - Wiß Pascal (pw046) - 
+
+ ## Abrstact
+ Simple TodoList app using django in the backend to provide a rest api
+
+
 
 
 
@@ -32,7 +41,7 @@ GET http://localhost:8000/api/tasks
 ```
 Create a new task:
 ```
-GET http://localhost:8000/api/tasks
+POST http://localhost:8000/api/tasks
 ```
 payload:
 ```
@@ -42,8 +51,7 @@ payload:
     "priority": null,
     "description": "",
     "created_date": null,
-    "due_date": null,
-    "user": null
+    "due_date": null
 }
 ```
 ## User
@@ -89,14 +97,5 @@ payload:
     "password": "",
     "name": ""
 }
-```
-Create user:
-
-```
-http://localhost:8000/api/user/create
-```
-Create user:
-```
-http://localhost:8000/api/user/create
 ```
 

@@ -25,12 +25,6 @@ export function checkBoxData(item, check) {
 
 export async function postData(task) {
   let { token } = localStorage.getItem("token");
-  console.log(token);
-
-  // if (token) {
-  //   headers["Authorization"] = `Token ${token}`;
-  // }
-  console.log(localStorage.getItem("token"));
   const response = await fetch("http://localhost:8000/api/tasks/", {
     method: "POST",
     headers: {
@@ -47,11 +41,6 @@ export async function postData(task) {
       due_date: null,
       user: 1
     })
-    });
-    return await response.json();
-  //  .then((response) => response.json())
-  //  .then((data) => {
-  //     return data;
-  //  });
-  // console.log("posted");
+  });
+  return await response.json();
 }
